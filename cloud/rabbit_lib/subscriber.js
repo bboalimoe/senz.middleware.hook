@@ -1,5 +1,5 @@
 var rabbit = require('wascally');
-var configuration = require('./configuration.js');
+var configuration = require('cloud/rabbit_lib/configuration.js');
 
 function handleMessage(callback){
     //setting up the handler for the subscriber
@@ -15,7 +15,7 @@ function handleMessage(callback){
     });
     console.log('------ Receiving ------');
     console.log('* Waiting for Msg from publisher.');
-};
+}
 
 exports.registerEvent = function(callback, consumer_name, event){
     var config = configuration.topology;

@@ -1,5 +1,5 @@
 var rabbit = require('wascally');
-var configuration = require( './configuration.js' )
+var configuration = require('cloud/rabbit_lib/configuration.js');
 
 publishMsg = function(msg, event) {
     console.log('------ Sending ------');

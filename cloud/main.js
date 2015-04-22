@@ -1,4 +1,4 @@
-var rabbit_lib = require('rabbit_lib');
+var publisher = require('cloud/rabbit_lib/publisher');
 
 AV.Cloud.define("hello", function(request, response) {
     response.success("Hello world!");
@@ -11,7 +11,7 @@ AV.Cloud.afterSave('UserLocation', function(request) {
         'timestamp': Date.now()
     };
     console.log('The new location object id: ' + request.object.id);
-    rabbit_lib.publish(msg, 'new_location_arrival');
+    publisher.publishMessage(msg, 'new_location_arrival');
 });
 
 AV.Cloud.afterSave('UserMic', function(request) {
@@ -21,7 +21,7 @@ AV.Cloud.afterSave('UserMic', function(request) {
         'timestamp': Date.now()
     };
     console.log('The new sound object id: ' + request.object.id);
-    rabbit_lib.publish(msg, 'new_sound_arrival');
+    publisher.publishMessage(msg, 'new_sound_arrival');
 });
 
 AV.Cloud.afterSave('UserSensor', function(request) {
@@ -31,5 +31,5 @@ AV.Cloud.afterSave('UserSensor', function(request) {
         'timestamp': Date.now()
     };
     console.log('The new motion object id: ' + request.object.id);
-    rabbit_lib.publish(msg, 'new_motion_arrival');
+    publisher.publishMessage(msg, 'new_motion_arrival');
 });
